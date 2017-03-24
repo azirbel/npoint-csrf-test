@@ -2,37 +2,40 @@
 <html>
   <head>
     <title>CSRF test for npoint.io</title>
+    <link href='http://alexzirbel.com/common/styles.css' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <h1>CSRF test for npoint.io</h1>
+    <div class='container'>
+      <h1>CSRF test for <a href='https://npoint.io'>npoint.io</a></h1>
 
-    <h2>Test: Form action</h2>
-    <p>
-      This form makes a POST to /documents, creating a new document for whatever user
-      is logged in. If creation works, deletion and everything else will work too.
-    </p>
-    <form action='https://www.npoint.io/documents' method='POST' target='_blank'>
-      <button type='submit'>Submit</button>
-    </form>
-    <p>
-      <b>Good</b> if this fails to create a document.
-      <br/>
-      <b>Bad</b> if it creates a document.
-    </p>
+      <h2>Test: Form action</h2>
+      <p>
+        This form makes a POST to /documents, creating a new document for whatever user
+        is logged in. If creation works, deletion and everything else will work too.
+      </p>
+      <form action='https://www.npoint.io/documents' method='POST' target='_blank'>
+        <button type='submit'>Submit</button>
+      </form>
+      <p>
+        <b>Good</b> if this fails to create a document.
+        <br/>
+        <b>Bad</b> if it creates a document.
+      </p>
 
-    <h2>Wishlist: Image tag GET request</h2>
-    <p>
-      This is an image request where the src depends on whether the user is logged in
-      to npoint or not. It uses a GET request, which rails doesn't protect from CSRF
-      because "get requests are idempotent". This is secure, but I don't like that it
-      leaks information about whether the user is logged in. I'd like to fix this
-      behavior.
-    </p>
-    <p>
-      <b>Good</b> if this image fails to load.
-      <br/>
-      <b>Bad</b> if it shows a goblin or ogre. (Goblin = logged in, ogre = logged out)
-    </p>
-    <img src='https://www.npoint.io/users/me/image' width='50' height='50'>
+      <h2>Wishlist: Image tag GET request</h2>
+      <p>
+        This is an image request where the src depends on whether the user is logged in
+        to npoint or not. It uses a GET request, which rails doesn't protect from CSRF
+        because "get requests are idempotent". This is secure, but I don't like that it
+        leaks information about whether the user is logged in. I'd like to fix this
+        behavior.
+      </p>
+      <p>
+        <b>Good</b> if this image fails to load.
+        <br/>
+        <b>Bad</b> if it shows a goblin or ogre. (Goblin = logged in, ogre = logged out)
+      </p>
+      <img src='https://www.npoint.io/users/me/image' width='50' height='50'>
+    </container>
   </body>
 </html>
